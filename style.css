@@ -1,0 +1,57 @@
+
+
+.navbar {
+  overflow: hidden;
+  background-color: white;}
+.navbar a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 18px;
+  text-decoration: none;
+  text-size: 18px;}
+
+.navbar a:hover:not(.active) {
+  background-color: green;}
+
+.active {
+  background-color: green;}
+
+.navbar .login-container{
+  float: right;}
+
+.navbar input[type=text]{
+  padding: 6px;
+  margin-top: 6px 10px;
+  font-size: 17px;
+  border: none;
+  width: 140px;}
+
+.open-button {
+  background-color: grey;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;}
+
+.form-popup {
+  display; none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid grey;}
+
+.form-container {
+  max-width: 400px;
+  padding: 10px;
+  background-color: white;}
+
+
+
+
