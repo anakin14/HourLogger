@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Log Hours</title>
-    <link rel="stylesheet" href="style.css"/
+    <link rel="stylesheet" href="style.css"/>
     <?php
     //$db=mysqli_connect("ccuresearch.coastal.edu:1433", "askinsey", "OXPrmka5") or die ('I cannot connect to the database because: ' . mysqli_error($link));
     $servername = "localhost";
     $username = "askinsey";
-    $password = "askinsey1";
+    $password = "askinsey";
 
+    //$conn = db_connect.php;
     try {
         $conn = new PDO("mysql:host=$servername;dbname=askinsey", $username, $password);
         // set the PDO error mode to exception
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        echo "Connected successfully";
+        //echo "Connected successfully";
     }
     catch(PDOException $e)
     {
