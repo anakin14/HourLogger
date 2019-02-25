@@ -23,6 +23,39 @@
 </div>
 
 
+<button class="open-button" onclick="openForm()">Create Account</button>
+
+<div class="form-popup" id="myForm">
+  <form action="/action_page.php" class="form-container">
+    <h1>New Account</h1>
+
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" required>
+
+    <label for="psw"><b>Full Name</b></label>
+    <input type="password" placeholder="Enter Name" name="name" required>
+
+    <label for="psw"><b>New Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+
+    <label for="psw"><b>Re-enter password</b></label>
+    <input type="password" placeholder="Re-nter Password" name="psw" required>
+
+    <button type="submit" class="btn">Create</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+</div>
+
+<script>
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script>
+
 
 
 </body>

@@ -9,9 +9,12 @@
   color: black;
   text-align: center;
   padding: 14px 18px;
-  text-decoration: none;}
+  text-decoration: none;
+  text-size: 18px;}
+
 .navbar a:hover:not(.active) {
   background-color: green;}
+
 .active {
   background-color: green;}
 
@@ -25,26 +28,30 @@
   border: none;
   width: 140px;}
 
-.navbar .login-container button{
-  float: right;
-  padding: 6px 10px;
-  margin-top: 8px;
-  margin-right: 16px;
+.open-button {
   background-color: grey;
   color: white;
-  font-size: 18px;
+  padding: 16px 20px;
   border: none;
-  cursor: pointer;}
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;}
 
-.navbar .login-container button:hover{
-  background-color: green;}
+.form-popup {
+  display; none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid grey;}
 
-.navbar a, .navbar input[type=text], .navbar .login-container button {
-    float: none;
-    display: block;
-    text-align: left;
-    width: 100%;
-    margin: 0;
-    padding: 7px;
-  }
+.form-container {
+  max-width: 400px;
+  padding: 10px;
+  background-color: white;}
+
+
+
 
