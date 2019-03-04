@@ -25,71 +25,48 @@
   session_start();
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-        if (!empty($_POST["username"]) && !empty($_POST["psw"]))
-        {
-            $username = $_POST["username"];
-            $password = $_POST["psw"];
-            $sql = "SELECT id, username, password FROM `askinsey`.`Users` WHERE username = '$username'";
-            $result = $conn->query($sql);
+      if (!empty($_POST["username"]) && !empty($_POST["psw"])) {
+          $username = $_POST["username"];
+          $password = $_POST["psw"];
+          $sql = "SELECT id, username, password FROM `askinsey`.`Users` WHERE username = '$username'";
+          $result = $conn->query($sql);
 
-            echo "trying $username with $password";
-            if($result->num_rows > 0)
-            {
-                //checks username and password if correct logs in
-                while($row = $result->fetch_assoc()) {
-                    echo $row["psw"];
-                    if ($row["psw"] == $password) {
-                        echo $row["username"];
-                        if ($row["username"] == $username) {
-                            $_SESSION["loggedin"] = true;
-                        }
+          echo "trying $username with $password";
+          if ($result->num_rows > 0) {
+              echo "yes";
+              //checks username and password if correct logs in
+              while ($row = $result->fetch_assoc()) {
+                  echo $row["password"];
+                  if ($row["password"] == $password) {
 
-                        //echo $result->num_rows;
-                        if ($result->num_rows > 0) { //breaks here
+                          $_SESSION["loggedin"] = true;
+                      }
+                  }
 
-                            while ($row = $result->fetch_assoc()) {
-                                $pss = $row["password"];
-                                echo "$password $pss";
-                                if ("$pss" == "$password") {
-                                    echo "yes";
-                                    $_SESSION["loggedin"] = true;
-                                    //echo $username;
-                                    $_SESSION["name"] = $username;
 
-                                }
+                  //echo $result->num_rows;
+                  if ($result->num_rows > 0) { //breaks here
 
-                            }
-                        } else {
-                            $invalid_login = "Invalid";
-                        }
+                      while ($row = $result->fetch_assoc()) {
+                          $pss = $row["password"];
+                          echo "$password $pss";
+                          if ("$pss" == "$password") {
+                              echo "yes";
+                              $_SESSION["loggedin"] = true;
+                              //echo $username;
+                              $_SESSION["name"] = $username;
 
-                    }
-                    if (!empty($_POST["name"]) && !empty($_POST["created_psw"]) && !empty($_POST["re_psw"]) && !empty($_POST["email"])) {
-                        $username = $POST["name"];
-                        $email = $POST["email"];
-                        $password = $POST["created_psw"];
+                          }
 
-                        // checks if the username is in use for creating account
-                        echo $row["username"];
-                        if (!get_magic_quotes_gpc()) {
-                            $_POST['name'] = addslashes($_POST['username']);
-                        }
-                        $usercheck = $_POST['name'];
-                        $check = $sql("SELECT username FROM users WHERE username = '$usercheck'")
-                        or die($invalid_login = "Invalid");
-                        $check2 = $sql($check);
-                        //if the name exists it gives an error
-                        if ($check2 != 0) {
-                            die('Sorry, the username ' . $_POST['username'] . ' is already in use.');
-                        }
-                    }
-                }
-
+                      }
+                  } else {
+                      $invalid_login = "Invalid";
+                  }
+              }
+          }
 
   }
-
-    // Initialize the session
-
+            //echo $result->num_rows;
 
 
     // Check if the user is already logged in, if yes then redirect him to welcome page
