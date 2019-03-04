@@ -20,7 +20,7 @@
     catch(PDOException $e)
     {
         echo "Connection failed: " . $e->getMessage();
-  echo "using password $password";
+        echo "using password $password";
   }
 
   ?>
@@ -32,7 +32,7 @@
 
 <div class ="navbar">
   <a href="home.html">Home</a>
-  <a href=".html">Hour Logger</a>
+  <a href="input_form.php">Hour Logger</a>
   <a href=".html">View Hours</a>
   <a href=".html">Help</a>
   <div class="login-container">
