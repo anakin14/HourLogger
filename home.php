@@ -101,17 +101,23 @@
 <button class="open-button" onclick="openForm()">Create Account</button>
 
 <div class="form-popup" id="myForm">
+
+    <
   <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" class="form-container" method="post">
     <h1>New Account</h1>
 
 
-    <input type="text" placeholder="Enter Email" name="email" required>
+    <input type="text" placeholder="Enter Username" name="name" required>
 
-    <input type="text" placeholder="Enter Name" name="name" required>
+    <input type="text" placeholder="First Name" name="first_name" required>
 
-    <input type="password" placeholder="Enter Password" name="created_psw" required>
+    <input type="text" placeholder="Last Name" name="last_name" required>
 
-    <input type="password" placeholder="Re-nter Password" name="re_psw" required>
+      <input type="text" placeholder="Fraternity" name="frat" required>
+
+      <input type="password" placeholder="Enter Password" name="created_psw" required>
+
+    <button type="submit" class="btn">Submit</button>
       
     <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
   </form>
