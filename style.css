@@ -5,7 +5,7 @@
   background-color: white;}
 .navbar a {
   float: left;
-  display: block;
+  display: block !important;
   color: black;
   text-align: center;
   padding: 14px 18px;
