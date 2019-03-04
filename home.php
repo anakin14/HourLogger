@@ -123,10 +123,10 @@
     <label for="name"><b>Full Name</b></label>
     <input type="text" placeholder="Enter Name" name="name" required>
 
-    <label for="psw"><b>New Password</b></label>
+    <label for="created_psw"><b>New Password</b></label>
     <input type="password" placeholder="Enter Password" name="created_psw" required>
 
-    <label for="psw"><b>Re-enter password</b></label>
+    <label for="re_psw"><b>Re-enter password</b></label>
     <input type="password" placeholder="Re-nter Password" name="re_psw" required>
 
     <button type="submit" class="btn">Create</button>
