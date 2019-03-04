@@ -31,7 +31,7 @@
             $password = $_POST["psw"];
             $sql = "SELECT id, username, password FROM `askinsey`.`Users` WHERE username = '$username'";
             $result = $conn->query($sql);
-<<<<<<< HEAD
+
             echo "trying $username with $password";
             if($result->num_rows > 0)
             {
@@ -45,7 +45,7 @@
                         {
                             $_SESSION["loggedin"] = true;
                         }
-=======
+
             //echo $result->num_rows;
             if($result->num_rows > 0)
             { //breaks here
@@ -59,7 +59,7 @@
                         $_SESSION["loggedin"] = true;
                         //echo $username;
                         $_SESSION["name"] = $username;
->>>>>>> 15f13b22f61b5b83682ce3714d142720b747daa1
+
                     }
 
                 }
