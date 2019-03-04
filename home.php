@@ -117,19 +117,15 @@
   <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" class="form-container" method="post">
     <h1>New Account</h1>
 
-    <label for="email"><b>Email</b></label>
+
     <input type="text" placeholder="Enter Email" name="email" required>
 
-    <label for="name"><b>Full Name</b></label>
     <input type="text" placeholder="Enter Name" name="name" required>
 
-    <label for="created_psw"><b>New Password</b></label>
     <input type="password" placeholder="Enter Password" name="created_psw" required>
 
-    <label for="re_psw"><b>Re-enter password</b></label>
     <input type="password" placeholder="Re-nter Password" name="re_psw" required>
-
-    <button type="submit" class="btn">Create</button>
+      
     <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
   </form>
 </div>
