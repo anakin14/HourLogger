@@ -1,4 +1,4 @@
-<home.html>
+<home.html xmlns="http://www.w3.org/1999/html">
 <html>
 <head>
 <title>hourLogger</title>
@@ -15,7 +15,7 @@
     //$conn = db_connect.php;
     try {
         $conn = new mysqli($servername, $username, $password, $dbname);
-        //echo "Connected successfully";
+        echo "Connected successfully";
     }
     catch(PDOException $e)
     {
@@ -23,6 +23,46 @@
   echo "using password $password";
   }
 
+
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+        if (!empty($_POST["username"]) && !empty($_POST["psw"]))
+        {
+            $username = $_POST["username"];
+            $password = $_POST["psw"];
+            $sql = "SELECT id, username, password FROM `askinsey`.`Users` WHERE username = $username";
+            $result = $conn->query($sql);
+            echo "trying $username with $password";
+            if($result->num_rows > 0)
+            {
+                while($row = $result->fetch_assoc()) {
+                    echo $row["psw"];
+                    if ($row["psw"] == $password)
+                    {
+                        $_SESSION["loggedin"] = true;
+                    }
+                }
+            }
+            else
+            {
+                $invalid_login = "Invalid";
+            }
+
+        }
+
+
+
+  }
+
+    // Initialize the session
+    //session_start();
+
+
+    // Check if the user is already logged in, if yes then redirect him to welcome page
+    if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+        header("location: input_form.php");
+        exit;
+}
   ?>
 
 </head>
@@ -36,9 +76,10 @@
   <a href=".html">View Hours</a>
   <a href=".html">Help</a>
   <div class="login-container">
-    <form action="/action_page.php">
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
       <input type="text" placeholder="Username" name="username">
       <input type="text" placeholder="Password" name="psw">
+        <h5 class="error"><?php echo $invalid_login ?></h5>
       <button type="submit">Login</button>
     </form>
   </div>
@@ -48,7 +89,7 @@
 <button class="open-button" onclick="openForm()">Create Account</button>
 
 <div class="form-popup" id="myForm">
-  <form action="/action_page.php" class="form-container">
+  <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" class="form-container" method="post">
     <h1>New Account</h1>
 
     <label for="email"><b>Email</b></label>
