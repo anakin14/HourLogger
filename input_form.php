@@ -26,10 +26,10 @@
 
 
 
-    $hourErr = $dateErr = "";
+    $hourErr = $dateErr = $frat = "";
 
     $un = $_SESSION["name"];
-    echo "user $un";
+    //echo "user $un";
 
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -38,9 +38,9 @@
             $hourErr = "Hours are required";
             $validInfo = false;
         }
-        elseif(preg_match("0-999", $_POST["hours"]))
+        elseif(!is_numeric($_POST["hours"]) || $_POST["hours"] <= 0)
         {
-            $hourErr = $_POST["hours"];//"Must be valid number above 0!";
+            $hourErr = "Must be > 0";//"Must be valid number above 0!";
             $validInfo = false;
         }
         else {$hours = $_POST["hours"];}
@@ -57,7 +57,7 @@
         if($validInfo)
         {
             //echo "valid";
-            $sql = "INSERT INTO `askinsey`.`Students` (`Name`, `Hours`, `Date`, `Description`) VALUES ('Test', '$hours', '$date', '$summary')";
+            $sql = "INSERT INTO `askinsey`.`Students` (`Name`, `Hours`, `Date`, `Description`) VALUES ('$un', '$hours', '$date', '$summary')";
 
             if($conn->query($sql) == TRUE)
             {
@@ -98,9 +98,11 @@
 </div>
 <div align="center">
     <d3>Submitting hours for <?php
-        echo $un;
-        /*
+        //echo $un;
+
         $sql = "SELECT * FROM `askinsey`.`Users` WHERE username = '$un'";
+        /*
+        echo $sql;
         $result = $conn->query($sql);
         echo $result;
         if($result->num_rows > 0) {
@@ -111,6 +113,11 @@
         }
         echo $frat;
         */
+
+        if($res = $conn->query($sql)){
+            echo "yes";
+        }
+
         ?>
 
 

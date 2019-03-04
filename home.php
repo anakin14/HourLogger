@@ -40,6 +40,7 @@
                   if ($row["password"] == $password) {
 
                           $_SESSION["loggedin"] = true;
+                          $_SESSION["name"] = $username;
                       }
                   }
 
@@ -82,7 +83,7 @@
 
 
 <div class ="navbar">
-  <a href="home.html">Home</a>
+  <a href="home.php">Home</a>
   <a href="input_form.php">Hour Logger</a>
   <a href=".html">View Hours</a>
   <a href=".html">Help</a>
