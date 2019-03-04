@@ -10,17 +10,61 @@
     $username = "askinsey";
     $password = "askinsey";
     $dbname = "askinsey";
+    $validInfo = true;
 
-    //$conn = db_connect.php;
-    try {
-        $conn = new mysqli($servername, $username, $password, $dbname);
-        //echo "Connected successfully";
-    }
-    catch(PDOException $e)
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    if($conn->connect_error)
     {
-        echo "Connection failed: " . $e->getMessage();
-        echo "using password $password";
+        die("Connection failed: ". $conn->connect_error);
     }
+
+
+
+    $hourErr = $dateErr = "";
+
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if(empty($_POST["hours"]))
+        {
+            $hourErr = "Hours are required";
+            $validInfo = false;
+        }
+        elseif(!preg_match("0-999", $_POST["hours"]))
+        {
+            $hourErr = "Must be valid number above 0!";
+            $validInfo = false;
+        }
+        else {$hours = $_POST["hours"];}
+
+        if(empty($_POST["date"]))
+        {
+            $dateErr = "Date is required";
+            $validInfo = false;
+        }
+        else {$date = $_POST["date"];}
+
+        $summary = $_POST["service_summary"];
+
+        if($validInfo)
+        {
+            //echo "valid";
+            $sql = "INSERT INTO `askinsey`.`Students` (`Name`, `Hours`, `Date`, `Description`) VALUES ('Anakin Kinsey', '$hours', '$date', '$summary')";
+
+            if($conn->query($sql) == TRUE)
+            {
+                //echo "Hours Added";
+            }
+            else
+            {echo "Hours not Added";}
+        }
+
+
+
+    }
+
+
+
+    $conn->close();
 
     ?>
 
@@ -36,42 +80,31 @@
 
     </div>
 </nav>
+    <h5>Temp User</h5>
+</div>
 <div align="center">
     <h1>
         Log Hours</h1>
 </div>
-
-<div><h1><?php
-        /*
-        $sql = "SELECT Name, ID, age, grade FROM Test";
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0) {
-        // output data of each row
-        while($row = $result->fetch_assoc()) {
-        echo "id: " . $row["ID"]. " - Name: " . $row["Name"]. " " . $row["grade"]. "<br>";
-        }
-        } else {
-        echo "0 results";
-        }
-        $conn->close();
-        */
-        ?></h1>
 
 </div>
 
 <div align="center">
     <d3>Submitting hours for 'insert frat'</d3>
     <div class="LoggingForms">
-        <form action="submit_form.php" method="post">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
             Hours Worked:
-            <input size = "6" type="number" placeholder="Hours" name="hours"><br>
+            <input size = "6" type="number" placeholder="Hours" name="hours">
+            <span class="error">* <?php echo $hourErr;?></span><br>
             Select Date:
-            <input type="date" name = "date" min="2000-01-02" max="2099-01-02"><br>
+            <input type="date" name = "date" min="2000-01-02" max="2099-01-02">
+            <span class="error">* <?php echo $dateErr;?></span><br>
             Give a short description:
             <!--<input maxlength="100"  type="textarea" placeholder="Summary of Service">-->
-            <textarea draggable="false" maxlength="100" rows = "3" cols="30" placeholder="Summary of Service" name="service_summary"></textarea><br>
-            <button type="submit">Submit</button>
+            <textarea draggable="false" maxlength="100" rows = "3" cols="30" placeholder="Summary of Service" name="service_summary"></textarea>
+            <br>
+            <button type="submit">Submit</button><br><br>
+            <h5 class="error">* is required</h5>
         </form>
     </div>
 </div>
