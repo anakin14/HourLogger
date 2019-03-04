@@ -5,6 +5,12 @@
     <title>Log Hours</title>
     <link rel="stylesheet" href="style.css"/>
     <?php
+    session_start();
+    if(!isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] !== true){
+        header("location: home.php");
+        exit;
+    }
+
     //$db=mysqli_connect("ccuresearch.coastal.edu:1433", "askinsey", "OXPrmka5") or die ('I cannot connect to the database because: ' . mysqli_error($link));
     $servername = "localhost";
     $username = "askinsey";
@@ -22,6 +28,9 @@
 
     $hourErr = $dateErr = "";
 
+    $un = $_SESSION["name"];
+    echo "user $un";
+
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if(empty($_POST["hours"]))
@@ -29,9 +38,9 @@
             $hourErr = "Hours are required";
             $validInfo = false;
         }
-        elseif(!preg_match("0-999", $_POST["hours"]))
+        elseif(preg_match("0-999", $_POST["hours"]))
         {
-            $hourErr = "Must be valid number above 0!";
+            $hourErr = $_POST["hours"];//"Must be valid number above 0!";
             $validInfo = false;
         }
         else {$hours = $_POST["hours"];}
@@ -48,7 +57,7 @@
         if($validInfo)
         {
             //echo "valid";
-            $sql = "INSERT INTO `askinsey`.`Students` (`Name`, `Hours`, `Date`, `Description`) VALUES ('Anakin Kinsey', '$hours', '$date', '$summary')";
+            $sql = "INSERT INTO `askinsey`.`Students` (`Name`, `Hours`, `Date`, `Description`) VALUES ('Test', '$hours', '$date', '$summary')";
 
             if($conn->query($sql) == TRUE)
             {
@@ -68,19 +77,18 @@
 
     ?>
 
-
 </head>
 <body>
 <nav>
     <div class ="navbar">
-        <a href="home.html">Home</a>
+        <a href="home.php">Home</a>
         <a href="input_form.php">Hour Logger</a>
         <a href=".html">View Hours</a>
         <a href=".html">Help</a>
 
     </div>
 </nav>
-    <h5>Temp User</h5>
+    <a href="logout.php">Logout</a>
 </div>
 <div align="center">
     <h1>
@@ -88,9 +96,26 @@
 </div>
 
 </div>
-
 <div align="center">
-    <d3>Submitting hours for 'insert frat'</d3>
+    <d3>Submitting hours for <?php
+        echo $un;
+        /*
+        $sql = "SELECT * FROM `askinsey`.`Users` WHERE username = '$un'";
+        $result = $conn->query($sql);
+        echo $result;
+        if($result->num_rows > 0) {
+            echo "yes";
+            while ($row = $result->fetch_assoc()) {
+                $frat = $row["frat"];
+            }
+        }
+        echo $frat;
+        */
+        ?>
+
+
+
+    </d3>
     <div class="LoggingForms">
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
             Hours Worked:

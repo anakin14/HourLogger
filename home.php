@@ -13,25 +13,25 @@
     $dbname = "askinsey";
 
     //$conn = db_connect.php;
-    try {
+
         $conn = new mysqli($servername, $username, $password, $dbname);
-        echo "Connected successfully";
-    }
-    catch(PDOException $e)
-    {
-        echo "Connection failed: " . $e->getMessage();
-        echo "using password $password";
-  }
 
 
+     if ($conn->connect_error) {
+         die("Connection failed: " . $conn->connect_error);
+     }
+
+
+  session_start();
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if (!empty($_POST["username"]) && !empty($_POST["psw"]))
         {
             $username = $_POST["username"];
             $password = $_POST["psw"];
-            $sql = "SELECT id, username, password FROM `askinsey`.`Users` WHERE username = $username";
+            $sql = "SELECT id, username, password FROM `askinsey`.`Users` WHERE username = '$username'";
             $result = $conn->query($sql);
+<<<<<<< HEAD
             echo "trying $username with $password";
             if($result->num_rows > 0)
             {
@@ -45,6 +45,21 @@
                         {
                             $_SESSION["loggedin"] = true;
                         }
+=======
+            //echo $result->num_rows;
+            if($result->num_rows > 0)
+            { //breaks here
+
+                while($row = $result->fetch_assoc()) {
+                    $pss = $row["password"];
+                    echo "$password $pss";
+                    if ("$pss" == "$password")
+                    {
+                        echo "yes";
+                        $_SESSION["loggedin"] = true;
+                        //echo $username;
+                        $_SESSION["name"] = $username;
+>>>>>>> 15f13b22f61b5b83682ce3714d142720b747daa1
                     }
 
                 }
@@ -80,7 +95,7 @@
   }
 
     // Initialize the session
-    //session_start();
+
 
 
     // Check if the user is already logged in, if yes then redirect him to welcome page
