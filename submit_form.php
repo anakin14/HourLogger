@@ -22,7 +22,7 @@
     //$conn = db_connect.php;
     try {
         $conn = new mysqli($servername, $username, $password, $dbname);
-        //echo "Connected successfully";
+        echo "Connected successfully";
     }
     catch(PDOException $e)
     {
@@ -37,7 +37,7 @@
         $summary = ($_POST["service_summary"]);
     }
 
-    $sql = "INSERT INTO `askinsey`.`Students` (`Name`, `Hours`, `Date`, `Description`) VALUES ('Anakin Kinsey', '$hours', '$date', '$summary')";;;
+    $sql = "INSERT INTO `askinsey`.`Students` (`Name`, `Hours`, `Date`, `Description`) VALUES ('Anakin Kinsey', '$hours', '$date', '$summary')";
 
     if($conn->query($sql) === TRUE)
     {

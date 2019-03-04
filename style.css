@@ -18,6 +18,9 @@
 .active {
   background-color: green;}
 
+.error{
+  color: red;}
+
 .navbar .login-container{
   float: right;}
 
