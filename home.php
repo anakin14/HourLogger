@@ -32,13 +32,15 @@
             $password = $_POST["psw"];
             $sql = "SELECT id, username, password FROM `askinsey`.`Users` WHERE username = $username";
             $result = $conn->query($sql);
-            echo "trying $username with $password";
-            if($result->num_rows > 0)
-            {
+            //echo "trying $username with $password";
+            if($result->num_rows > 1)
+            { //breaks here
+                //echo "yes";
                 while($row = $result->fetch_assoc()) {
-                    echo $row["psw"];
-                    if ($row["psw"] == $password)
+                    $pss = $row["psw"];
+                    if (strcmp($pss, $password) == 0)
                     {
+                        echo "yes";
                         $_SESSION["loggedin"] = true;
                     }
                 }
