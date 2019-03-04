@@ -31,7 +31,7 @@
             $password = $_POST["psw"];
             $sql = "SELECT id, username, password FROM `askinsey`.`Users` WHERE username = '$username'";
             $result = $conn->query($sql);
-<<<<<<< HEAD
+
             echo "trying $username with $password";
             if($result->num_rows > 0)
             {
@@ -43,7 +43,6 @@
                         if ($row["username"] == $username) {
                             $_SESSION["loggedin"] = true;
                         }
-<<<<<<< HEAD
 
                         //echo $result->num_rows;
                         if ($result->num_rows > 0) { //breaks here
@@ -64,23 +63,6 @@
                             $invalid_login = "Invalid";
                         }
 
-=======
-=======
-            //echo $result->num_rows;
-            if($result->num_rows > 0)
-            { //breaks here
-
-                while($row = $result->fetch_assoc()) {
-                    $pss = $row["password"];
-                    echo "$password $pss";
-                    if ("$pss" == "$password")
-                    {
-                        echo "yes";
-                        $_SESSION["loggedin"] = true;
-                        //echo $username;
-                        $_SESSION["name"] = $username;
->>>>>>> 15f13b22f61b5b83682ce3714d142720b747daa1
->>>>>>> parent of 8286998... ifx
                     }
                     if (!empty($_POST["name"]) && !empty($_POST["created_psw"]) && !empty($_POST["re_psw"]) && !empty($_POST["email"])) {
                         $username = $POST["name"];
