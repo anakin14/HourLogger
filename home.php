@@ -35,12 +35,18 @@
             echo "trying $username with $password";
             if($result->num_rows > 0)
             {
+                //checks username and password if correct logs in
                 while($row = $result->fetch_assoc()) {
                     echo $row["psw"];
                     if ($row["psw"] == $password)
                     {
-                        $_SESSION["loggedin"] = true;
+                        echo $row["username"];
+                        if ($row["username"]==$username)
+                        {
+                            $_SESSION["loggedin"] = true;
+                        }
                     }
+
                 }
             }
             else
@@ -49,7 +55,26 @@
             }
 
         }
+        if(!empty($_POST["name"]) && !empty($_POST["created_psw"]) && !empty($_POST["re_psw"]) && !empty($_POST["email"]))
+        {
+            $username = $POST["name"];
+            $email = $POST["email"];
+            $password = $POST["created_psw"];
 
+            // checks if the username is in use for creating account
+            echo $row["username"];
+            if (!get_magic_quotes_gpc()) {
+                $_POST['name'] = addslashes($_POST['username']);
+            }
+            $usercheck = $_POST['name'];
+            $check = $sql("SELECT username FROM users WHERE username = '$usercheck'")
+            or die($invalid_login = "Invalid");
+            $check2 = $sql($check);
+            //if the name exists it gives an error
+            if ($check2 != 0) {
+                die('Sorry, the username ' . $_POST['username'] . ' is already in use.');
+            }
+        }
 
 
   }
@@ -95,14 +120,14 @@
     <label for="email"><b>Email</b></label>
     <input type="text" placeholder="Enter Email" name="email" required>
 
-    <label for="psw"><b>Full Name</b></label>
+    <label for="name"><b>Full Name</b></label>
     <input type="text" placeholder="Enter Name" name="name" required>
 
     <label for="psw"><b>New Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <input type="password" placeholder="Enter Password" name="created_psw" required>
 
     <label for="psw"><b>Re-enter password</b></label>
-    <input type="password" placeholder="Re-nter Password" name="psw" required>
+    <input type="password" placeholder="Re-nter Password" name="re_psw" required>
 
     <button type="submit" class="btn">Create</button>
     <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
