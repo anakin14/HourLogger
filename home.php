@@ -21,6 +21,7 @@
          die("Connection failed: " . $conn->connect_error);
      }
 
+     $name_err = $frat_err = "";
 
   session_start();
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -65,6 +66,40 @@
                   }
               }
           }
+      if(!empty($_POST["created_psw"]))
+      {
+          $name = $_POST["name"];
+          $first_name = $_POST["first_name"];
+          $last_name = $_POST["last_name"];
+          $frat = $_POST["frat"];
+          $created_psw = $_POST["created_psw"];
+
+          $sql = "SELECT `first_name`, `last_name`, `frat`, `password`, `id`, `username` FROM `askinsey`.`Users` WHERE username = '$name'";
+          $result = $conn->query($sql);
+
+          if($result->num_rows > 0)
+          {
+              $name_err = "This username is already taken!";
+          }
+          else
+          {
+              $sql = "SELECT `first_name`, `last_name`, `frat`, `password`, `id`, `username` FROM `askinsey`.`Users` WHERE frat = '$frat'";
+              $result = $conn->query($sql);
+
+              if($result->num_rows < 1)
+              {
+                  $frat_err = "This fraternity does not exist!";
+              }
+              else
+              {
+                  $sql = "INSERT INTO `askinsey`.`Users` (`first_name`, `last_name`, `frat`,`password`, `username` ) VALUES ('$first_name', '$last_name', '$frat', '$created_psw', '$name')";
+                  $result = $conn->query($sql);
+
+              }
+
+          }
+
+      }
 
   }
             //echo $result->num_rows;
@@ -108,13 +143,13 @@
 
 
     <input type="text" placeholder="Enter Username" name="name" required>
-
+      <h5><?php echo $name_err?></h5>
     <input type="text" placeholder="First Name" name="first_name" required>
 
     <input type="text" placeholder="Last Name" name="last_name" required>
 
       <input type="text" placeholder="Fraternity" name="frat" required>
-
+        <h5><?php echo $frat_err?></h5>
       <input type="password" placeholder="Enter Password" name="created_psw" required>
 
     <button type="submit" class="btn">Submit</button>

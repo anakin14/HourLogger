@@ -29,6 +29,7 @@
     $hourErr = $dateErr = $frat = "";
 
     $un = $_SESSION["name"];
+
     //echo "user $un";
 
 
