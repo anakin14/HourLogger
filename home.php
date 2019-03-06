@@ -31,13 +31,11 @@
           $password = $_POST["psw"];
           $sql = "SELECT id, username, password FROM `askinsey`.`Users` WHERE username = '$username'";
           $result = $conn->query($sql);
-
-          echo "trying $username with $password";
           if ($result->num_rows > 0) {
-              echo "yes";
+              //echo "yes";
               //checks username and password if correct logs in
               while ($row = $result->fetch_assoc()) {
-                  echo $row["password"];
+                  //echo $row["password"];
                   if ($row["password"] == $password) {
 
                           $_SESSION["loggedin"] = true;
@@ -51,9 +49,8 @@
 
                       while ($row = $result->fetch_assoc()) {
                           $pss = $row["password"];
-                          echo "$password $pss";
                           if ("$pss" == "$password") {
-                              echo "yes";
+                              //echo "yes";
                               $_SESSION["loggedin"] = true;
                               //echo $username;
                               $_SESSION["name"] = $username;
@@ -61,10 +58,12 @@
                           }
 
                       }
-                  } else {
+                  }
+          }
+          else {
                       $invalid_login = "Invalid";
                   }
-              }
+
           }
       if(!empty($_POST["created_psw"]))
       {
