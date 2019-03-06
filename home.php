@@ -148,8 +148,17 @@
 
     <input type="text" placeholder="Last Name" name="last_name" required>
 
-      <input type="text" placeholder="Fraternity" name="frat" required>
+      <div class="dropdown">
+          <button onclick="myFunction()" class="dropbtn" name="frat">Fraternity</button>
+          <div id="myDropdown" class="dropdown-content">
+              <a name="frat">Nu Phi</a>
+              <a name="frat">Kappa Chi</a>
+              <a name="frat">Xi Epsilon</a>
+          </div>
+      </div>
+      <br>
         <h5><?php echo $frat_err?></h5>
+      <br>
       <input type="password" placeholder="Enter Password" name="created_psw" required>
 
     <button type="submit" class="btn">Submit</button>
@@ -159,13 +168,38 @@
 </div>
 
 <script>
+    /* When the user clicks on the button, toggle between hiding and showing the dropdown content */
+    function myFunction()
+    {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event)
+    {
+        if (!event.target.matches('.dropbtn'))
+        {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++)
+            {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show'))
+                {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+
 function openForm() {
   document.getElementById("myForm").style.display = "block";
 }
 
 function closeForm() {
-  document.getElementById("myForm").style.display = "none";
+    document.getElementById("myForm").style.display = "none";
 }
+
 </script>
 
 
