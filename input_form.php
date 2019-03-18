@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style.css"/>
     <?php
     session_start();
-    if(!isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] !== true){
+    if(!isset($_SESSION["id"])){
         header("location: home.php");
         exit;
     }
@@ -28,7 +28,8 @@
 
     $hourErr = $dateErr = $frat = "";
 
-    $un = $_SESSION["name"];
+    //$un = $_SESSION["name"];
+    $id = $_SESSION["id"];
 
     //echo "user $un";
 
@@ -58,7 +59,7 @@
         if($validInfo)
         {
             //echo "valid";
-            $sql = "INSERT INTO `askinsey`.`Students` (`Name`, `Hours`, `Date`, `Description`) VALUES ('$un', '$hours', '$date', '$summary')";
+            $sql = "INSERT INTO `askinsey`.`Students` (`Name`, `Hours`, `Date`, `Description`) VALUES ('$id', '$hours', '$date', '$summary')";
 
             if($conn->query($sql) == TRUE)
             {
@@ -101,7 +102,7 @@
     <d3>Submitting hours for <?php
         //echo $un;
 
-        $sql = "SELECT * FROM `askinsey`.`Users` WHERE username = '$un'";
+        $sql = "SELECT * FROM `askinsey`.`Users` WHERE id = $id";
         /*
         echo $sql;
         $result = $conn->query($sql);

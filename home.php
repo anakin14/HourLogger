@@ -38,27 +38,15 @@
                   //echo $row["password"];
                   if ($row["password"] == $password) {
 
-                          $_SESSION["loggedin"] = true;
-                          $_SESSION["name"] = $username;
-                      }
+                          //$_SESSION["loggedin"] = true;
+                          //$_SESSION["name"] = $username;
+                            $_SESSION["id"] = $row["id"];
+                  }
                   }
 
 
                   //echo $result->num_rows;
-                  if ($result->num_rows > 0) { //breaks here
 
-                      while ($row = $result->fetch_assoc()) {
-                          $pss = $row["password"];
-                          if ("$pss" == "$password") {
-                              //echo "yes";
-                              $_SESSION["loggedin"] = true;
-                              //echo $username;
-                              $_SESSION["name"] = $username;
-
-                          }
-
-                      }
-                  }
           }
           else {
                       $invalid_login = "Invalid";
@@ -105,10 +93,17 @@
 
 
     // Check if the user is already logged in, if yes then redirect him to welcome page
+  /*
     if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         header("location: input_form.php");
         exit;
 }
+  */
+  if(isset($_SESSION["id"]))
+  {
+      header("location: input_form.php");
+      exit;
+  }
   ?>
 
 </head>
@@ -153,9 +148,6 @@
         <option>Kappa Chi</option>
         <option>Xi Epsilon</option>
       </select>
-      <br>
-        <h5><?php echo $frat_err?></h5>
-      <br>
       <input type="password" placeholder="Enter Password" name="created_psw" required>
 
     <button type="submit" class="btn">Submit</button>
