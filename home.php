@@ -148,10 +148,11 @@
     <input type="text" placeholder="Last Name" name="last_name" required>
 
       <label for="frat">Fraternity</label>
-      <select name="frat" id="frat"></select>
+      <select name="frat" id="frat">
         <option>Nu Phi</option>
         <option>Kappa Chi</option>
         <option>Xi Epsilon</option>
+      </select>
       <br>
         <h5><?php echo $frat_err?></h5>
       <br>
