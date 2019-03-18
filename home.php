@@ -147,14 +147,11 @@
 
     <input type="text" placeholder="Last Name" name="last_name" required>
 
-      <div class="dropdown">
-          <button onclick="myFunction()" class="dropbtn" name="frat">Fraternity</button>
-          <div id="myDropdown" class="dropdown-content">
-              <a name="frat">Nu Phi</a>
-              <a name="frat">Kappa Chi</a>
-              <a name="frat">Xi Epsilon</a>
-          </div>
-      </div>
+      <label for="frat">Fraternity</label>
+      <select name="frat" id="frat"></select>
+        <option>Nu Phi</option>
+        <option>Kappa Chi</option>
+        <option>Xi Epsilon</option>
       <br>
         <h5><?php echo $frat_err?></h5>
       <br>
