@@ -124,7 +124,7 @@
   <div class="login-container">
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
       <input type="text" placeholder="Username" name="username">
-      <input type="text" placeholder="Password" name="psw">
+      <input type="password" placeholder="Password" name="psw">
         <h5 class="error"><?php echo $invalid_login ?></h5>
       <button type="submit">Login</button>
     </form>
