@@ -147,7 +147,7 @@
 
     <input type="text" placeholder="Last Name" name="last_name" required>
 
-      <label for="frat">Fraternity</label>
+      <label for="frat">Chapter</label>
       <select name="frat" id="frat">
         <option>Nu Phi</option>
         <option>Kappa Chi</option>
