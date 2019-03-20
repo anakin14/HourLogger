@@ -59,7 +59,7 @@
         if($validInfo)
         {
             //echo "valid";
-            $sql = "INSERT INTO `askinsey`.`Students` (`Name`, `Hours`, `Date`, `Description`) VALUES ('$id', '$hours', '$date', '$summary')";
+            $sql = "INSERT INTO `askinsey`.`Students` (`id`, `Hours`, `Date`, `Description`) VALUES ('$id', '$hours', '$date', '$summary')";
 
             if($conn->query($sql) == TRUE)
             {
