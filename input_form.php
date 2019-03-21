@@ -81,15 +81,9 @@
 
 </head>
 <body>
-<nav>
-    <div class ="navbar">
-        <a href="home.php">Home</a>
-        <a href="input_form.php">Hour Logger</a>
-        <a href=".html">View Hours</a>
-        <a href=".html">Help</a>
-
-    </div>
-</nav>
+<?php
+    include ('menu.php');
+?>
     <a href="logout.php">Logout</a>
 </div>
 <div align="center">

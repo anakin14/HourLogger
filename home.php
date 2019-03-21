@@ -29,7 +29,7 @@
       if (!empty($_POST["username"]) && !empty($_POST["psw"])) {
           $username = $_POST["username"];
           $password = $_POST["psw"];
-          $sql = "SELECT id, username, password FROM `askinsey`.`Users` WHERE username = '$username'";
+          $sql = "SELECT id, admin, password FROM `askinsey`.`Users` WHERE username = '$username'";
           $result = $conn->query($sql);
           if ($result->num_rows > 0) {
               //echo "yes";
@@ -41,6 +41,11 @@
                           //$_SESSION["loggedin"] = true;
                           //$_SESSION["name"] = $username;
                             $_SESSION["id"] = $row["id"];
+                            if($row["admin"] == 1)
+                            {
+                                header("location: admin.php");
+                                exit;
+                            }
                   }
                   }
 
@@ -112,10 +117,9 @@
 
 
 <div class ="navbar">
-  <a href="home.php">Home</a>
-  <a href="input_form.php">Hour Logger</a>
-  <a href=".html">View Hours</a>
-  <a href=".html">Help</a>
+    <?php
+        include ('menu.php');
+    ?>
   <div class="login-container">
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
       <input type="text" placeholder="Username" name="username">
