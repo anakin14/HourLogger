@@ -123,7 +123,7 @@
   <div class="login-container">
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
       <input type="text" placeholder="Username" name="username">
-      <input type="text" placeholder="Password" name="psw">
+      <input type="password" placeholder="Password" name="psw">
         <h5 class="error"><?php echo $invalid_login ?></h5>
       <button type="submit">Login</button>
     </form>
@@ -146,7 +146,7 @@
 
     <input type="text" placeholder="Last Name" name="last_name" required>
 
-      <label for="frat">Fraternity</label>
+      <label for="frat">Chapter</label>
       <select name="frat" id="frat">
         <option>Nu Phi</option>
         <option>Kappa Chi</option>
