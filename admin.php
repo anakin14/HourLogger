@@ -9,6 +9,9 @@
 <html lang="en">
 <head>
 
+<?php
+    include ('db_connect.php');
+?>
 
 </head>
 

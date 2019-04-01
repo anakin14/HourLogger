@@ -12,17 +12,7 @@
     }
 
     //$db=mysqli_connect("ccuresearch.coastal.edu:1433", "askinsey", "OXPrmka5") or die ('I cannot connect to the database because: ' . mysqli_error($link));
-    $servername = "localhost";
-    $username = "askinsey";
-    $password = "askinsey";
-    $dbname = "askinsey";
-    $validInfo = true;
-
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    if($conn->connect_error)
-    {
-        die("Connection failed: ". $conn->connect_error);
-    }
+    include ('db_connect.php');
 
 
 

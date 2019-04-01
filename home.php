@@ -7,21 +7,11 @@
 
   <?php
     //$db=mysqli_connect("ccuresearch.coastal.edu:1433", "askinsey", "OXPrmka5") or die ('I cannot connect to the database because: ' . mysqli_error($link));
-    $servername = "localhost";
-    $username = "askinsey";
-    $password = "askinsey";
-    $dbname = "askinsey";
-
-    //$conn = db_connect.php;
-
-        $conn = new mysqli($servername, $username, $password, $dbname);
 
 
-     if ($conn->connect_error) {
-         die("Connection failed: " . $conn->connect_error);
-     }
+  include ('db_connect.php');
 
-     $name_err = $frat_err = "";
+  $name_err = $frat_err = "";
 
   session_start();
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -87,6 +77,8 @@
                   $sql = "INSERT INTO `askinsey`.`Users` (`first_name`, `last_name`, `frat`,`password`, `username` ) VALUES ('$first_name', '$last_name', '$frat', '$created_psw', '$name')";
                   $result = $conn->query($sql);
 
+
+
               }
 
           }
@@ -148,9 +140,18 @@
 
       <label for="frat">Chapter</label>
       <select name="frat" id="frat">
-        <option>Nu Phi</option>
-        <option>Kappa Chi</option>
-        <option>Xi Epsilon</option>
+          <?php
+            $sql = "SELECT * FROM `Frat`";
+            $result = $conn->query($sql);
+            //echo "<option>1</option>";
+
+          while ($row = $result->fetch_assoc()) {
+
+              $fratList = $row["frat"];
+              echo "<option>$fratList</option>";
+
+          }
+          ?>
       </select>
       <input type="password" placeholder="Enter Password" name="created_psw" required>
 
