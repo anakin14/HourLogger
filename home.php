@@ -26,14 +26,23 @@
               //checks username and password if correct logs in
               while ($row = $result->fetch_assoc()) {
                   //echo $row["password"];
-                  if ($row["password"] == $password) {
-
+                  if ($row["password"] == $password)
+                  {
                           //$_SESSION["loggedin"] = true;
                           //$_SESSION["name"] = $username;
                             $_SESSION["id"] = $row["id"];
+
                             if($row["admin"] == 1)
                             {
+                                $_SESSION["admin"] = 1;
                                 header("location: admin.php");
+                                exit;
+                            }
+                            else
+                            {
+
+
+                                header("location: input_form.php");
                                 exit;
                             }
                   }
@@ -96,7 +105,12 @@
         exit;
 }
   */
-  if(isset($_SESSION["id"]))
+  if(isset($_SESSION["id"]) && isset($_SESSION["admin"]))
+  {
+      header("location: admin.php");
+      exit;
+  }
+  else if(isset($_SESSION["id"]))
   {
       header("location: input_form.php");
       exit;

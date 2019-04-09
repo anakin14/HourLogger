@@ -53,7 +53,7 @@
 
             if($conn->query($sql) == TRUE)
             {
-                //echo "Hours Added";
+                echo "Hours Added";
             }
             else
             {echo "Hours not Added";}
@@ -86,19 +86,16 @@
     <d3>Submitting hours for <?php
         //echo $un;
 
-        $sql = "SELECT * FROM `askinsey`.`Users` WHERE id = $id";
-        /*
-        echo $sql;
+        $sql = "SELECT * FROM `askinsey`.`Users` WHERE id = '$id'";
+
         $result = $conn->query($sql);
-        echo $result;
         if($result->num_rows > 0) {
-            echo "yes";
             while ($row = $result->fetch_assoc()) {
                 $frat = $row["frat"];
             }
         }
         echo $frat;
-        */
+
 
         if($res = $conn->query($sql)){
             echo "yes";

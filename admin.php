@@ -9,6 +9,11 @@
 <html lang="en">
 <head>
 
+    <link rel="stylesheet" href="style.css"/>
+
+
+    <title>Admin</title>
+
 <?php
     include ('db_connect.php');
 ?>
@@ -16,6 +21,10 @@
 </head>
 
 <body>
+
+<?php
+    include('menu.php');
+?>
 
 
 
