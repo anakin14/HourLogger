@@ -65,6 +65,7 @@
             try {
                 $sql = "INSERT INTO `askinsey`.`Students` (`id`, `Hours`, `Date`, `Description`, `frat`) VALUES ('$id', '$hours', '$date', '$summary', '$frat');";
                 $result = $conn->query($sql);
+                //echo "run";
             }
             catch (mysqli_sql_exception $e)
             {
@@ -87,7 +88,7 @@
 <?php
     include ('menu.php');
 ?>
-    <a href="logout.php">Logout</a>
+    <!--<a href="logout.php">Logout</a>-->
 </div>
 <div align="center">
     <h1>
