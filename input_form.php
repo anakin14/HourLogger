@@ -17,11 +17,20 @@
 
 
     $hourErr = $dateErr = $frat = "";
-
+    $validInfo = true;
     //$un = $_SESSION["name"];
     $id = $_SESSION["id"];
 
     //echo "user $un";
+    $sql = "SELECT * FROM `askinsey`.`Users` WHERE id = '$id'";
+
+    $result = $conn->query($sql);
+    if($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $frat = $row["frat"];
+        }
+    }
+
 
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -46,17 +55,21 @@
 
         $summary = $_POST["service_summary"];
 
+        $sql = "SELECT * FROM `askinsey`.`Users` WHERE id = '$id'";
+
+        //echo "<h1>$id $hours $date $summary $frat</h1>";
         if($validInfo)
         {
-            //echo "valid";
-            $sql = "INSERT INTO `askinsey`.`Students` (`id`, `Hours`, `Date`, `Description`) VALUES ('$id', '$hours', '$date', '$summary')";
-
-            if($conn->query($sql) == TRUE)
-            {
-                //echo "Hours Added";
+            //echo "yes";
+            //echo "valid"
+            try {
+                $sql = "INSERT INTO `askinsey`.`Students` (`id`, `Hours`, `Date`, `Description`, `frat`) VALUES ('$id', '$hours', '$date', '$summary', '$frat');";
+                $result = $conn->query($sql);
             }
-            else
-            {echo "Hours not Added";}
+            catch (mysqli_sql_exception $e)
+            {
+                die($e->getMessage());
+            }
         }
 
 
@@ -84,26 +97,7 @@
 </div>
 <div align="center">
     <d3>Submitting hours for <?php
-        //echo $un;
-
-        $sql = "SELECT * FROM `askinsey`.`Users` WHERE id = $id";
-        /*
-        echo $sql;
-        $result = $conn->query($sql);
-        echo $result;
-        if($result->num_rows > 0) {
-            echo "yes";
-            while ($row = $result->fetch_assoc()) {
-                $frat = $row["frat"];
-            }
-        }
         echo $frat;
-        */
-
-        if($res = $conn->query($sql)){
-            echo "yes";
-        }
-
         ?>
 
 

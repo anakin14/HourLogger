@@ -9,6 +9,11 @@
 <html lang="en">
 <head>
 
+    <link rel="stylesheet" href="style.css"/>
+
+
+    <title>Admin</title>
+
 <?php
     include ('db_connect.php');
     $result = mysqli_query($conn, "SELECT * FROM users ORDER BY frat");
@@ -17,6 +22,7 @@
 </head>
 
 <body>
+
 
 <table width='80%' border="0">
     <tr bgcolor="teal">
@@ -39,6 +45,13 @@
     }
     ?>
 </table>
+
+<?php
+    include('menu.php');
+?>
+
+
+
 
 
 </body>
