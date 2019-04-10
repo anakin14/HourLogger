@@ -12,11 +12,14 @@
   text-decoration: none;
   text-size: 18px;}
 
-.navbar a:hover:not(.active) {
-  background-color: green;}
+.navbar a:hover:not(.active)
+{
+  background-color: lightskyblue;
+  color: white;
+}
 
 .active {
-  background-color: green;}
+  background-color: lightskyblue;}
 
 .error{
   color: red;}

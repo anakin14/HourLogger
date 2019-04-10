@@ -43,27 +43,30 @@ if(!isset($_SESSION["id"])){
             <th>Description</th>
         </tr>
         <?php
+            try {
+                $sql = "SELECT * FROM Students WHERE id = '$id'";
+                if ($conn->query($sql) == TRUE) {
+                    $result = $conn->query($sql);
 
-            $sql = "SELECT * FROM Students WHERE id = '$id'";
-            if($conn->query($sql) == TRUE)
-            {
-                $result = $conn->query($sql);
-
-                while ($row = $result->fetch_assoc()) {
-                    $date = $row["Date"];
-                    $Hours = $row["Hours"];
-                    $Description = $row{"Description"};
-                    echo "<tr>
+                    while ($row = $result->fetch_assoc()) {
+                        $date = $row["Date"];
+                        $Hours = $row["Hours"];
+                        $Description = $row{"Description"};
+                        echo "<tr>
                             <td>$date</td>
                             <td>$Hours</td>
                             <td>$Description</td>
-                          </tr>"
-                    ;
+                          </tr>";
 
+                    }
+                } else {
+                    echo "No hours found";
                 }
             }
-            else
-            {echo "No hours found";}
+            catch (mysqli_sql_exception $exception)
+            {
+                die($exception ->getMessage());
+            }
         ?>
     </table>
 

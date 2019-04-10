@@ -19,8 +19,15 @@
       if (!empty($_POST["username"]) && !empty($_POST["psw"])) {
           $username = $_POST["username"];
           $password = $_POST["psw"];
-          $sql = "SELECT id, admin, password FROM `askinsey`.`Users` WHERE username = '$username'";
-          $result = $conn->query($sql);
+          try {
+              $sql = "SELECT id, admin, password FROM `askinsey`.`Users` WHERE username = '$username'";
+              $result = $conn->query($sql);
+          }
+          catch (mysqli_sql_exception $exception)
+          {
+              echo $exception;
+          }
+
           if ($result->num_rows > 0) {
               //echo "yes";
               //checks username and password if correct logs in
@@ -65,8 +72,14 @@
           $frat = $_POST["frat"];
           $created_psw = $_POST["created_psw"];
 
-          $sql = "SELECT `first_name`, `last_name`, `frat`, `password`, `id`, `username` FROM `askinsey`.`Users` WHERE username = '$name'";
-          $result = $conn->query($sql);
+          try {
+              $sql = "SELECT `first_name`, `last_name`, `frat`, `password`, `id`, `username` FROM `askinsey`.`Users` WHERE username = '$name'";
+              $result = $conn->query($sql);
+          }
+          catch (mysqli_sql_exception $exception)
+          {
+              echo $exception;
+          }
 
           if($result->num_rows > 0)
           {
@@ -74,21 +87,14 @@
           }
           else
           {
-              $sql = "SELECT `first_name`, `last_name`, `frat`, `password`, `id`, `username` FROM `askinsey`.`Users` WHERE frat = '$frat'";
-              $result = $conn->query($sql);
-
-              if($result->num_rows < 1)
-              {
-                  $frat_err = "This fraternity does not exist!";
-              }
-              else
-              {
+              try{
                   $sql = "INSERT INTO `askinsey`.`Users` (`first_name`, `last_name`, `frat`,`password`, `username` ) VALUES ('$first_name', '$last_name', '$frat', '$created_psw', '$name')";
                   $result = $conn->query($sql);
-
-
-
-              }
+                }
+                catch (mysqli_sql_exception $exception)
+                {
+                    echo $exception;
+                }
 
           }
 
