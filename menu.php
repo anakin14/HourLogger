@@ -28,7 +28,7 @@ session_start();
             echo "<a href=\"home.php\">Home</a>";
         ?>
 
-        <a href=".html">Help</a>
+        <a href="help.php">Help</a>
 
     </div>
 </nav>

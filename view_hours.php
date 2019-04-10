@@ -37,7 +37,7 @@ if(!isset($_SESSION["id"])){
 ?>
 <div align="center">
     <table>
-        <tr>
+        <tr bgcolor="teal">
             <th>Date</th>
             <th>Num Hours</th>
             <th>Description</th>
