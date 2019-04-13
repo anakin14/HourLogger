@@ -83,7 +83,7 @@
 
 <div align="center">
     <div class="remove_frat">
-        <h3>Remove Frat</h3>
+        <h3>Edit Frats</h3>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" class="form-container" method="post">
             <select name="remove_frat" id="frat">
                 <?php
