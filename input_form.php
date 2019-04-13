@@ -84,18 +84,17 @@
     ?>
 
 </head>
-<body>
+<body style="background-image: url(./img/frat-house.jpg)">
 <?php
     include ('menu.php');
 ?>
     <!--<a href="logout.php">Logout</a>-->
-</div>
+
 <div align="center">
     <h1>
         Log Hours</h1>
 </div>
 
-</div>
 <div align="center">
     <d3>Submitting hours for <?php
         echo $frat;

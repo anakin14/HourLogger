@@ -37,11 +37,13 @@ if(!isset($_SESSION["id"])){
 ?>
 <div align="center">
     <table>
+        <thead>
         <tr bgcolor="teal">
-            <th>Date</th>
-            <th>Num Hours</th>
-            <th>Description</th>
+            <th scope="col">Date</th>
+            <th scope="col">Num Hours</th>
+            <th scope="col">Description</th>
         </tr>
+        </thead>
         <?php
             try {
                 $sql = "SELECT * FROM Students WHERE id = '$id'";

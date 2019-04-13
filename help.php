@@ -9,7 +9,16 @@
 
 
 ?>
+<head>
 
+    <link rel="stylesheet" href="style.css"/>
+
+
+    <title>Admin</title>
+</head>
+<?php
+include ('menu.php');
+?>
 <div align="center">
     <h1>Help</h1>
 </div>

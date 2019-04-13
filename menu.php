@@ -13,7 +13,7 @@ session_start();
         <?php
         if(isset($_SESSION["id"]) && isset($_SESSION["admin"]))
         {
-            echo "<a href=\".php\">Edit Frats</a>";
+            echo "<a href=\"remove_frat.php\">Edit Frats</a>";
             echo "<a href=\".php\">Edit Students</a>";
             echo "<a href=\".php\">View Hour Statistics</a>";
             echo "<a href=\"logout.php\">Logout</a>";
