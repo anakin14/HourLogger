@@ -81,8 +81,7 @@
     include ('menu.php');
 ?>
 
-<div align="center">
-    <div class="remove_frat">
+    <div class="main-content" align="center">
         <h3>Edit Frats</h3>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" class="form-container" method="post">
             <select name="remove_frat" id="frat">
@@ -97,17 +96,21 @@
             </select>
             <button type="submit" class="btn">Submit</button>
         </form>
+        <br>
+        <br>
     </div>
-    <div class="add_frat">
+    <br>
+    <br>
+    <div class="main-content" align="center">
         <h3>Add Frat</h3>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" class="form-container" method="post">
             <input type="text" placeholder="Add Frat" name="add_frat" required>
             <button type="submit" class="btn">Submit</button>
             <h5 class="error"><?php echo $invalid_frat ?></h5>
         </form>
-
+        <br>
+        <br>
     </div>
-</div>
 </body>
 
 

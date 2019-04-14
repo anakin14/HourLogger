@@ -19,7 +19,9 @@
 <?php
 include ('menu.php');
 ?>
-<div align="center">
+<div align="center" class="main-content">
     <h1>Help</h1>
+    <br>
+    <h3>Navigate using the above menu options</h3>
 </div>
 

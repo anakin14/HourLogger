@@ -88,8 +88,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 include ('menu.php');
 ?>
 
-<div align="center">
-    <div class="remove_frat">
+
+    <div class="main-content" align="center">
         <h3>Remove Student</h3>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" class="form-container" method="post">
             <select name="remove_student" id = "remove_student">
@@ -105,11 +105,14 @@ include ('menu.php');
             </select>
             <button type="submit" class="btn">Submit</button>
         </form>
+        <br>
+        <br>
     </div>
-    <div class="add_student">
+    <br>
+    <br>
+    <div class="main-content" align="center">
+        <h3>Add Student</h3>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" class="form-container" method="post">
-            <h1>Add Student</h1>
-
 
             <input type="text" placeholder="Enter Username" name="name" required>
             <input type="text" placeholder="First Name" name="first_name" required>
@@ -132,9 +135,9 @@ include ('menu.php');
             <input type="password" placeholder="Enter Password" name="created_psw" required>
             <button type="submit" class="btn">Submit</button>
         </form>
-
+        <br>
+        <br>
     </div>
-</div>
 </body>
 
 

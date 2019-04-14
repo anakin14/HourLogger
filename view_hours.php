@@ -35,11 +35,11 @@ if(!isset($_SESSION["id"])){
 <?php
     include ('menu.php');
 ?>
-<div align="center">
+<div align="center" class="main-content">
     <table>
         <thead>
-        <tr bgcolor="teal">
-            <th scope="col">Date</th>
+        <tr bgcolor="#00bfff">
+            <th scope="col" width="20">Date</th>
             <th scope="col">Num Hours</th>
             <th scope="col">Description</th>
         </tr>

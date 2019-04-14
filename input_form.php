@@ -90,12 +90,10 @@
 ?>
     <!--<a href="logout.php">Logout</a>-->
 
-<div align="center">
-    <h1>
-        Log Hours</h1>
-</div>
 
-<div align="center">
+<div align="center" class="main-content">
+    <h1>
+        Log Hours</h1><br>
     <d3>Submitting hours for <?php
         echo $frat;
         ?>

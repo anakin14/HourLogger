@@ -132,53 +132,54 @@
     <?php
         include ('menu.php');
     ?>
-  <div class="login-container">
+</div>
+<div class="main-content" align="center" >
+    <h2>Existing User</h2>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-      <input type="text" placeholder="Username" name="username">
+      <input type="text" placeholder="Username" name="username"><br><br>
       <input type="password" placeholder="Password" name="psw">
         <h5 class="error"><?php echo $invalid_login ?></h5>
       <button type="submit">Login</button>
     </form>
-  </div>
 </div>
+<br><br><br><br>
+<div align="center" class="main-content">
+    <h2>New User</h2>
+    <button class="open-button" onclick="openForm()">Create Account</button>
+
+    <div class="form-popup" id="myForm" align="center">
+      <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" class="form-container" method="post">
+        <h1>New Account</h1>
 
 
-<button class="open-button" onclick="openForm()">Create Account</button>
+        <input type="text" placeholder="Enter Username" name="name" required>
+          <h5><?php echo $name_err?></h5>
+        <input type="text" placeholder="First Name" name="first_name" required>
 
-<div class="form-popup" id="myForm">
+        <input type="text" placeholder="Last Name" name="last_name" required>
 
-    <
-  <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" class="form-container" method="post">
-    <h1>New Account</h1>
+          <label for="frat">Chapter</label>
+          <select name="frat" id="frat">
+              <?php
+                $sql = "SELECT * FROM `Frat`";
+                $result = $conn->query($sql);
+                //echo "<option>1</option>";
 
+              while ($row = $result->fetch_assoc()) {
 
-    <input type="text" placeholder="Enter Username" name="name" required>
-      <h5><?php echo $name_err?></h5>
-    <input type="text" placeholder="First Name" name="first_name" required>
+                  $fratList = $row["frat"];
+                  echo "<option>$fratList</option>";
 
-    <input type="text" placeholder="Last Name" name="last_name" required>
+              }
+              ?>
+          </select>
+          <input type="password" placeholder="Enter Password" name="created_psw" required>
 
-      <label for="frat">Chapter</label>
-      <select name="frat" id="frat">
-          <?php
-            $sql = "SELECT * FROM `Frat`";
-            $result = $conn->query($sql);
-            //echo "<option>1</option>";
+        <button type="submit" class="btn">Submit</button>
 
-          while ($row = $result->fetch_assoc()) {
-
-              $fratList = $row["frat"];
-              echo "<option>$fratList</option>";
-
-          }
-          ?>
-      </select>
-      <input type="password" placeholder="Enter Password" name="created_psw" required>
-
-    <button type="submit" class="btn">Submit</button>
-      
-    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-  </form>
+        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+      </form>
+    </div>
 </div>
 
 <script>
