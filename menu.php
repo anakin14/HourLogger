@@ -15,7 +15,7 @@ session_start();
         {
             echo "<a href='edit_frat.php'>Edit Frats</a>";
             echo "<a href=\"edit_student.php\">Edit Students</a>";
-            echo "<a href=\".php\">View Hour Statistics</a>";
+            echo "<a href=\"view_hours.php\">View Hour Statistics</a>";
             echo "<a href=\"logout.php\">Logout</a>";
         }
         else if(isset($_SESSION["id"]))

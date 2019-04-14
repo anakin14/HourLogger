@@ -56,13 +56,13 @@ include('menu.php');
         <td>description</td>
     </tr>
     <?php
+    $result = mysqli_query($sql, "SELECT * FROM users ORDER BY id DESC");
         try {
-            $sql = "SELECT * FROM Students WHERE frat = '$frat'";
+
             if ($conn->query($sql) == TRUE) {
                 $result = $conn->query($sql);
 
                 while ($row = $result->fetch_assoc()) {
-                    $frat = $row["frat"];
                     $id = $row["id"];
                     $date = $row["Date"];
                     $Hours = $row["Hours"];
@@ -78,10 +78,11 @@ include('menu.php');
             } else {
                 echo "Not connected";
             }
-        }
-        catch (mysqli_sql_exception $exception) {
+
+        } catch (mysqli_sql_exception $exception) {
             die($exception->getMessage());
         }
+
     ?>
 </table>
 
