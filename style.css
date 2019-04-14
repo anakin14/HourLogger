@@ -4,7 +4,7 @@
 
 .navbar {
   overflow: hidden;
-  background-color: white;}
+  background-color: teal;}
 .navbar a {
   float: left;
   display: block !important;
@@ -20,8 +20,16 @@
   color: white;
 }
 
+
 .active {
   background-color: black;}
+
+.login-container{
+  ;
+}
+body {
+  background-color: teal;
+}
 
 .error{
   color: red;}
@@ -106,8 +114,19 @@
 .show {display: block;}
 
 table, th, td {
-  border: 1px solid black;
+  border: 1px dotted teal;
+  border-collapse: collapse;
+  width: auto;
+  font-size: 130%;
+
 }
 
-
+.main-content
+{
+  background-color: lightskyblue ;
+  width: 50%;
+  position: relative;
+  left: 25%;
+  right: 25%;
+}
 

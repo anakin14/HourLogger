@@ -35,13 +35,15 @@ if(!isset($_SESSION["id"])){
 <?php
     include ('menu.php');
 ?>
-<div align="center">
+<div align="center" class="main-content">
     <table>
-        <tr>
-            <th>Date</th>
-            <th>Num Hours</th>
-            <th>Description</th>
+        <thead>
+        <tr bgcolor="#00bfff">
+            <th scope="col" width="20">Date</th>
+            <th scope="col">Num Hours</th>
+            <th scope="col">Description</th>
         </tr>
+        </thead>
         <?php
             try {
                 $sql = "SELECT * FROM Students WHERE id = '$id'";

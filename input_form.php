@@ -65,6 +65,7 @@
             try {
                 $sql = "INSERT INTO `askinsey`.`Students` (`id`, `Hours`, `Date`, `Description`, `frat`) VALUES ('$id', '$hours', '$date', '$summary', '$frat');";
                 $result = $conn->query($sql);
+                //echo "run";
             }
             catch (mysqli_sql_exception $e)
             {
@@ -83,19 +84,16 @@
     ?>
 
 </head>
-<body>
+<body style="background-image: url(./img/frat-house.jpg)">
 <?php
     include ('menu.php');
 ?>
-    <a href="logout.php">Logout</a>
-</div>
-<div align="center">
-    <h1>
-        Log Hours</h1>
-</div>
+    <!--<a href="logout.php">Logout</a>-->
 
-</div>
-<div align="center">
+
+<div align="center" class="main-content">
+    <h1>
+        Log Hours</h1><br>
     <d3>Submitting hours for <?php
         echo $frat;
         ?>

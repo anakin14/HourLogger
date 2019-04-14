@@ -25,6 +25,11 @@
 <?php
 include('menu.php');
 ?>
+<div class="main-content" align="center">
+    <h1>Administrators</h1>
+    <br>
+    <h3>Use above menu options to perform administrative commands</h3>
+</div>
 
 <label for="frat">Chapter</label>
 <select name="frat" id="frat">
