@@ -26,13 +26,15 @@ catch (mysqli_sql_exception $exception)
 }
 //getting id of the data from url
 $id = $_GET['id'];
-$description = $_GET['description'];
-
+$Description = $_GET['Description'];
+echo $Description;
 //deleting the row from table
 //$result = mysqli_query($sql, "DELETE FROM users WHERE id=$id");
 
-try {
-    $sql = "DELETE FROM Students WHERE id=`$id` && Description=`$desciption`";
+try{
+    echo $id;
+    echo $Description;
+    $sql = "DELETE FROM `Students` WHERE id='$id' && Description='$Description'";
     $conn->query($sql);
 }
 catch (mysqli_sql_exception $exception)
@@ -41,3 +43,4 @@ catch (mysqli_sql_exception $exception)
 }
 //redirecting to the display page (index.php in our case)
 header("Location: admin.php");
+exit;
