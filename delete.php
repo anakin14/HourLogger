@@ -30,5 +30,7 @@ $id = $_GET['id'];
 //deleting the row from table
 $result = mysqli_query($sql, "DELETE FROM users WHERE id=$id");
 
+$sql = "DELETE FROM Students WHERE Desciption=$id";
+
 //redirecting to the display page (index.php in our case)
 header("Location: admin.php");

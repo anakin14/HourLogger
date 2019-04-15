@@ -98,7 +98,8 @@ include ('menu.php');
 
                     $firstName = $row["first_name"];
                     $lastName = $row["last_name"];
-                    echo "<option>$firstName $lastName</option>";
+                    $id = $row["id"];
+                    echo "<option>$firstName $lastName ($id)</option>";
 
                 }
                 ?>
