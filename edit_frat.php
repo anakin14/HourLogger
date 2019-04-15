@@ -51,6 +51,11 @@
                 $remove_frat = $_POST["remove_frat"];
                 $sql = "DELETE FROM `Frat` WHERE `frat` = '$remove_frat'";
                 $result = $conn->query($sql);
+                $sql = "DELETE FROM `Users` WHERE `frat` = '$remove_frat'";
+                $result = $conn->query($sql);
+                $sql = "DELETE FROM `Students` WHERE `frat` = '$remove_frat'";
+                $result = $conn->query($sql);
+
 
             }
             catch (mysqli_sql_exception $exception)

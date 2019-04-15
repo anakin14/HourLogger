@@ -74,14 +74,15 @@ catch (mysqli_sql_exception $exception)
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
         $frat = $_POST["frat"];
+        echo "<h3>Viewing Hours for $frat</h3>";
         $sql = "SELECT * FROM Students WHERE frat = '$frat';";
         $result = $conn->query($sql);
         if($result->num_rows > 0) {
             echo "<table width='80%' border=\"1\">";
-            echo "<tr bgcolor=\"teal\">";
+            echo "<tr bgcolor=\"#00bfff\">";
             echo "<td>id</td>";
-            echo "<td>hours</td>";
-            echo "<td>date</td>";
+            echo "<td>Date</td>";
+            echo "<td>Hours</td>";
             echo "<td>description</td>";
             echo "</tr>";
             /*
@@ -95,11 +96,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             }
             */
-
+            $totalHours = 0;
             while ($row = $result->fetch_assoc()) {
                 $id = $row["id"];
                 $date = $row["Date"];
                 $Hours = $row["Hours"];
+                $totalHours = $totalHours + $Hours;
                 $Description = $row{"Description"};
                 echo "<tr>
                                 <td>$id</td>
@@ -107,9 +109,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <td>$Hours</td>
                                 <td>$Description</td>
                               ";
-                echo "<td><a href=\"delete.php?id=$id&Description=$Description\" onClick=\"return confirm('Are you sure you want to delete $Description $id?')\">Delete</a></td></tr>";
+                echo "<td><a href=\"delete.php?id=$id&Description=$Description\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td></tr>";
 
             }
+            echo "<h3>Total Hours: $totalHours</h3>";
         }
         else
         {
