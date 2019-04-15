@@ -62,7 +62,7 @@ include('menu.php');
             if ($conn->query($sql) == TRUE) {
                 $result = $conn->query($sql);
 
-                while ($row = $result->fetch_assoc()) {
+                while ($row = $result->fetch_assoc($sql)) {
                     $id = $row["id"];
                     $date = $row["Date"];
                     $Hours = $row["Hours"];

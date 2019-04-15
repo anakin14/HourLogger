@@ -50,7 +50,7 @@ catch (mysqli_sql_exception $exception)
 
 
 <div class="main-content" align="center">
-    <h3>Which Frats Hours</h3>
+    <h3>Which Frat's Hours</h3>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" class="form-container" method="post">
         <select name="frat" id="frat">
             <?php
