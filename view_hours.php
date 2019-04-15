@@ -35,6 +35,7 @@ if(!isset($_SESSION["id"])){
 <?php
     include ('menu.php');
 ?>
+
 <div align="center" class="main-content">
     <table>
         <thead>
@@ -47,6 +48,39 @@ if(!isset($_SESSION["id"])){
         <?php
             try {
                 $sql = "SELECT * FROM Students WHERE id = '$id'";
+
+
+
+<div class="main-content" align="center">
+    <h3>Which Frat's Hours</h3>
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" class="form-container" method="post">
+        <select name="frat" id="frat">
+            <?php
+            while ($row = $result->fetch_assoc()) {
+
+                $fratList = $row["frat"];
+                echo "<option>$fratList</option>";
+
+            }
+            ?>
+        </select>
+        <button type="submit" class="btn">Submit</button>
+    </form>
+<br>
+
+
+
+<table width='80%' border="1">
+    <tr bgcolor="teal">
+        <td>id</td>
+        <td>hours</td>
+        <td>date</td>
+        <td>description</td>
+    </tr>
+<?php
+
+        try {
+
                 if ($conn->query($sql) == TRUE) {
                     $result = $conn->query($sql);
 
