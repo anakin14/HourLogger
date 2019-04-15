@@ -107,7 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <td>$Hours</td>
                                 <td>$Description</td>
                               ";
-                echo "<td><a href=\"delete.php?id=$id\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td></tr>";
+                echo "<td><a href=\"delete.php?id=$id&description=$Description\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td></tr>";
 
             }
         }
