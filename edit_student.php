@@ -55,8 +55,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     else
     {
         try{
-            $remove_student = $_POST["remove_student"];
-            $sql = "DELETE FROM `Frat` WHERE `frat` = '$remove_student'";
+            $remove_student = explode(' ',trim($_POST["remove_student"]));
+            $remove_student_id = $remove_student[2];
+            echo $remove_student_id;
+            $sql = "DELETE FROM `Users` WHERE `id` = '$remove_student_id'";
             $result = $conn->query($sql);
 
         }
@@ -99,7 +101,7 @@ include ('menu.php');
                     $firstName = $row["first_name"];
                     $lastName = $row["last_name"];
                     $id = $row["id"];
-                    echo "<option>$firstName $lastName ($id)</option>";
+                    echo "<option>$firstName $lastName $id</option>";
 
                 }
                 ?>
